@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 1.驱动mvc注解（controller）配置-->
+    <mvc:annotation-driven/>
+    <!-- 2.扫描controller组件-->
+    <context:component-scan base-package="com.tutoring.controller"/>
+    <!-- 3.静态资源默认放行配置-->
+    <mvc:default-servlet-handler/>
+    <!-- <mvc:resources mapping="/static/**" location="/static/"/>-->
+    <!-- 4.视图解析器配置-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/><!--访问任何资源-->
+        <property name="suffix" value=".jsp"/><!--设置后缀为.jsp的文件-->
+    </bean>
+</beans>
