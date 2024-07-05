@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 1.0
  * Date: 2024-07-05
  * QQ：2311170320
- * 功能实现:
+ * 功能实现: 学生实体类
  */
 @NoArgsConstructor
 @AllArgsConstructor

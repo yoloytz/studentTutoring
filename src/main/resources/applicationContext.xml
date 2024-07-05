@@ -25,11 +25,11 @@ http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-sprin
     <!-- 4.SqlSessionFactoryBean配置-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="com.ytz.pojo"/>
+        <property name="typeAliasesPackage" value="com.tutoring.pojo"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
     <!-- 5.Mapper接口扫描器-->
-    <mybatis:scan base-package="com.ytz.mapper"/>
+    <mybatis:scan base-package="com.tutoring.mapper"/>
     <!-- 6.事务管理器-->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

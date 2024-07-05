@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  * @version 1.0
  * Date: 2024-07-05
  * QQ：2311170320
- * 功能实现:
+ * 功能实现: 管理员实体类
  */
 @AllArgsConstructor
 @NoArgsConstructor
