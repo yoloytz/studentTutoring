@@ -5,6 +5,8 @@ import com.tutoring.pojo.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author 云天泽 Steven
  * @version 1.0
@@ -31,5 +33,14 @@ public class TeacherServiceImpl implements TeacherService {
         }else {
             return null;
         }
+    }
+
+    /**
+     * 获取所有教师信息
+     * @return 所有教师信息 List容器
+     */
+    @Override
+    public List<Teacher> getAllTeachers() {
+        return teacherMapper.selectAllTeachers();
     }
 }

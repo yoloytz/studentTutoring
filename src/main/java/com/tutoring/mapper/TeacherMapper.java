@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * @author 云天泽 Steven
  * @version 1.0
@@ -21,4 +23,11 @@ public interface TeacherMapper {
      */
     @Select("SELECT * FROM studenttutoring.teacher WHERE  teachername = #{teacherName}")
     Teacher findTeacher(@Param("teacherName") String teacherName);
+
+    /**
+     * 获取所有的教师信息
+     * @return 所有的教师信息 List容器
+     */
+    @Select("SELECT * FROM studenttutoring.teacher")
+    List<Teacher> selectAllTeachers();
 }

@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tutoring.mapper.StudentMapper">
+
+    <update id="upDateUserInfo">
+        UPDATE studenttutoring.student
+        <set>
+            <if test="userName != null">username = #{userName},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="school != null">school = #{school},</if>
+            <if test="info != null">info = #{info},</if>
+            <if test="tel != null">tel = #{tel},</if>
+        </set>
+        WHERE studentid = #{studentId}
+    </update>
+
+
 </mapper>

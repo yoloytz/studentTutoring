@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
-
     @RequestMapping(path = "logTeacher",method = RequestMethod.POST)
     private ModelAndView logTeacher(String username,String password){
         ModelAndView modelAndView;
@@ -28,12 +27,11 @@ public class TeacherController {
         if(teacher != null){
             modelAndView = new ModelAndView("teacher/teacherView");
             modelAndView.addObject("teacherInfo",teacher);
-            return modelAndView;
         }else {
             modelAndView = new ModelAndView("loginError");
             String errorText = username + "用户不存在或密码错误";
             modelAndView.addObject("ErrorText",errorText);
-            return modelAndView;
         }
+        return modelAndView;
     }
 }

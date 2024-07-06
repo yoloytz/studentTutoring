@@ -1,9 +1,12 @@
 package com.tutoring.mapper;
 
+import com.tutoring.pojo.Classes;
 import com.tutoring.pojo.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @author 云天泽 Steven
@@ -21,4 +24,18 @@ public interface StudentMapper {
      */
     @Select("SELECT * FROM studenttutoring.student WHERE username = #{username}")
     Student findStudent(@Param("username") String username);
+
+    /**
+     * 在数据库中使用动态Sql语句 根据传来的学生信息id修改学生信息
+     * @param student 需要更改的学生信息
+     */
+    void upDateUserInfo(Student student);
+
+    /**
+     * 查询数据库中对应学生id的信息
+     * @param studentId 学生id
+     * @return 学生信息
+     */
+    @Select("SELECT * FROM studenttutoring.student WHERE studentid = #{studentId}")
+    Student getStudentInfobyId(int studentId);
 }

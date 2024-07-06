@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 云天泽 Steven
@@ -18,11 +19,12 @@ import java.util.ArrayList;
 @Data
 public class Student {
     private int studentId;
+    private String name;
     private String userName;
     private String password;
     private int age;
     private String school;
     private String info;
     private String tel;
-    private ArrayList<Classes> studentClasses;
+    private String gender;
 }

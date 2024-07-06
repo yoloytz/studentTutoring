@@ -18,7 +18,14 @@ import java.util.ArrayList;
 @Data
 public class Teacher {
     private int teacherId;
+    /**
+     * teacherName用于登录
+     */
     private String teacherName;
+    /**
+     *  name 用于存放教师的姓名
+     */
+    private String name;
     private String teacherPassword;
     private int age;
     private String gender;
@@ -26,5 +33,4 @@ public class Teacher {
     private String state;
     private String info;
     private String tel;
-    private ArrayList<Classes> teacherClasses;
 }

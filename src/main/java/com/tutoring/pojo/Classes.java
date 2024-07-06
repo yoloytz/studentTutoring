@@ -3,7 +3,9 @@ package com.tutoring.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -24,6 +26,7 @@ public class Classes {
     private String state;
     private int classTeacherId;
     private int classStudentId;
-    private Date classTime;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime classTime;
     private String classPlace;
 }
