@@ -41,7 +41,7 @@ public class StudentController {
         Student student = studentService.logStudent(username,password);
         if(student != null){
             session.setAttribute("currentUser", student);
-            return refreshView(student);
+            return refreshView(student,"登录成功！今天也有好好学习吗？");
         }else {
             ModelAndView modelAndView;
             modelAndView = new ModelAndView("loginError");
@@ -58,19 +58,20 @@ public class StudentController {
      */
     @RequestMapping(path = "updateUserInfo",method = RequestMethod.POST)
     private ModelAndView updateUserInfo(@ModelAttribute Student student, HttpSession session){
+        System.out.println("输出学生信息" + student.toString());
         studentService.upDateStudentInfoOnView(student);
         // 从会话中检索当前用户信息
         // 从数据库中重新获取最新的用户信息
         Student updatedStudent = studentService.getStudentById(student.getStudentId());
         // 更新会话中的用户信息
         session.setAttribute("currentUser", updatedStudent);
-        return refreshView(updatedStudent);
+        return refreshView(updatedStudent,"信息更新成功");
     }
 
     /**
      根据传来的学生信息刷新UserView页面
      */
-    private ModelAndView refreshView(Student student){
+    private ModelAndView refreshView(Student student,String message){
         ModelAndView modelAndView;
         List<Teacher> allTeachers = teacherService.getAllTeachers();
         List<Classes> studentClasses = studentService.getAllClassesInfoByStudentId(student.getStudentId());
@@ -78,6 +79,7 @@ public class StudentController {
         modelAndView.addObject("user",student);
         modelAndView.addObject("allTeachers",allTeachers);
         modelAndView.addObject("studentClasses",studentClasses);
+        modelAndView.addObject("message",message);
         return modelAndView;
     }
 
@@ -93,7 +95,7 @@ public class StudentController {
         studentService.addUserClassInfo(classInfo);
         // 从会话中检索当前用户信息
         Student currentUser = (Student) session.getAttribute("currentUser");
-        return refreshView(currentUser);
+        return refreshView(currentUser,"需求添加成功！等待老师接单吧！");
     }
 
     /**
@@ -104,12 +106,10 @@ public class StudentController {
      */
     @RequestMapping(path = "changePassword",method = RequestMethod.POST)
     private ModelAndView changePassword(String newPassword, HttpSession session){
-        System.out.println("新密码测试" + newPassword);
         Student currentUser = (Student) session.getAttribute("currentUser");
         Student newStudent = studentService.updateStudentPassword(newPassword,currentUser);
-        ModelAndView modelAndView =  refreshView(newStudent);
-        modelAndView.addObject("message", "密码修改成功");
-        return modelAndView;
+        return refreshView(newStudent,"密码修改成功");
+
     }
 
 }

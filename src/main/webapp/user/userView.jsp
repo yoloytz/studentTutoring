@@ -26,7 +26,7 @@
 
 <div class="container">
     <h1 class="text-center">用户视图</h1>
-    <h2>欢迎, <c:out value="${user.userName}" /></h2>
+    <h2>欢迎, <c:out value="${user.name}" /></h2>
 
     <c:if test="${not empty message}">
         <div class="alert alert-success" role="alert">
