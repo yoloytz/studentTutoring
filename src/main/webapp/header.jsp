@@ -9,5 +9,7 @@
     <link href="asserts/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <script src="asserts/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+
 </head>
 <body>

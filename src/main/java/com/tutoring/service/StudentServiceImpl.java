@@ -86,5 +86,16 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.updateUserPassword(studentId,newPassword);
         return studentMapper.getStudentInfobyId(studentId);
     }
+    /**
+     * 根据学生信息注册学生信息
+     *
+     * @param student 注册学生信息
+     * @return 注册后返回数据库中注册成功的信息
+     */
+    @Override
+    public Student rigStudent(Student student) {
+        studentMapper.rigStudent(student);
+        return studentMapper.findStudent(student.getUserName());
+    }
 
 }

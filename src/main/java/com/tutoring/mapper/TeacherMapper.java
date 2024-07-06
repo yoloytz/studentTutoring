@@ -53,4 +53,20 @@ public interface TeacherMapper {
      */
     @Update("UPDATE studenttutoring.teacher SET teacherpassword = #{newPassword} WHERE teacherid = #{teacherId}")
     void updateTeacherPassword(@Param("teacherId") int teacherId, @Param("newPassword") String newPassword);
+
+
+    /**
+     * 注册教师
+     * @param teacher 教师信息
+     */
+    void rigTeacher(@Param("m_teacher") Teacher teacher);
+
+
+    /**
+     * 根据教师名 查询教师信息
+     * @param teacherName 教师名
+     * @return Teacher 返回教师信息
+     */
+    @Select("SELECT * FROM studenttutoring.teacher WHERE  teachername = #{m_teacherName}")
+    Teacher getTeacherByName(@Param("m_teacherName") String teacherName);
 }

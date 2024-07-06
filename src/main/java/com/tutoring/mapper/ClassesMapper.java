@@ -57,4 +57,27 @@ public interface ClassesMapper {
      */
     @Select("SELECT * FROM studenttutoring.classes WHERE state = '待接单'")
     List<Classes> getAllClassesOnFree();
+
+
+    /**
+     * * 获取所有待审核的课程
+     * @return 获取所有待审核的课程
+     */
+    @Select("SELECT * FROM studenttutoring.classes WHERE state = '待审核'")
+    List<Classes> getAllClassesNoVet();
+
+    /**
+     * * 审核通过课程
+     * @param classId 审核通过的课程id
+     */
+    @Update("UPDATE studenttutoring.classes SET state = '待接单' WHERE classid = #{classId}")
+    void passTheCourse(@Param("classId") int classId);
+
+
+    /**
+     * * 审核不通过课程
+     * @param classId 课程号
+     */
+    @Delete("DELETE FROM studenttutoring.classes WHERE classid = #{classId}")
+    void deleteTheCourse(@Param("classId") int classId);
 }

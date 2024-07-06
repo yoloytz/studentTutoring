@@ -7,6 +7,7 @@ import com.tutoring.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -75,6 +76,13 @@ public class TeacherController {
         return refreshTeacherView(newTeacher,"密码修改成功");
     }
 
+    @RequestMapping(path = "register",method = RequestMethod.POST)
+    public ModelAndView register(@ModelAttribute Teacher teacher, HttpSession session) {
+        Teacher newTeacher = teacherService.rigTeacher(teacher);
+        session.setAttribute("currentTeacher", newTeacher);
+        String msg = "注册成功！ "  + newTeacher.getTeacherName() + "\t 已经跳转！";
+        return refreshTeacherView(newTeacher,msg);
+    }
 
 
     private ModelAndView refreshTeacherView(Teacher teacher, String message){

@@ -8,6 +8,7 @@ import com.tutoring.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,6 +69,15 @@ public class StudentController {
         return refreshView(updatedStudent,"信息更新成功");
     }
 
+    @PostMapping("/register")
+    public ModelAndView register(@ModelAttribute Student student, HttpSession session) {
+
+        Student newStudent = studentService.rigStudent(student);
+        session.setAttribute("currentUser", newStudent);
+        String msg = "注册成功！ "  + newStudent.getUserName() + "\t 已经跳转！";
+        return refreshView(newStudent,msg);
+    }
+
     /**
      根据传来的学生信息刷新UserView页面
      */
@@ -109,7 +119,6 @@ public class StudentController {
         Student currentUser = (Student) session.getAttribute("currentUser");
         Student newStudent = studentService.updateStudentPassword(newPassword,currentUser);
         return refreshView(newStudent,"密码修改成功");
-
     }
 
 }

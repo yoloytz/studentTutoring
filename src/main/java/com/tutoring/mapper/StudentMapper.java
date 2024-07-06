@@ -47,4 +47,11 @@ public interface StudentMapper {
      */
     @Update("UPDATE studenttutoring.student SET password = #{password} WHERE studentid = #{studentId}")
     void updateUserPassword(@Param("studentId") int studentId, @Param("password") String password);
+
+
+    /**
+     * 注册学生
+     * @param student 注册学生信息
+     */
+    void rigStudent(@Param("student") Student student);
 }

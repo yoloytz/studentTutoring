@@ -1,6 +1,9 @@
 package com.tutoring.service;
 
+import com.tutoring.pojo.Classes;
 import com.tutoring.pojo.Root;
+
+import java.util.List;
 
 /**
  * @author 云天泽 Steven
@@ -17,4 +20,22 @@ public interface RootService {
      * @return Root 返回用户信息对象
      */
     Root logRoot(String rootName,String rootPassword);
+
+    /**
+     * @return 返回没有审核的课程
+     */
+    List<Classes> getAllClassesNoVet();
+
+    /**
+     * 审核通过课程
+     * @param id 审核通过的课程id
+     */
+    void vetClass(int id);
+
+
+    /**
+     * 删除课程
+     * @param id 不通过的课程id
+     */
+    void deleteClass(int id);
 }

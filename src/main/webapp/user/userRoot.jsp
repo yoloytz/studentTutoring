@@ -37,6 +37,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-primary">登录</button>
+                <a href="user/rigUser.jsp" class="btn btn-secondary">注册账号</a>
             </div>
         </div>
     </form>

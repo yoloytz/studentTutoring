@@ -112,4 +112,19 @@ public class TeacherServiceImpl implements TeacherService {
     public List<Classes> getAllOrders() {
         return classesMapper.getAllClassesOnFree();
     }
+
+    /**
+     * 注册教师
+     *
+     * @param teacher 教师信息
+     * @return 返回注册后的教师信息
+     */
+    @Override
+    public Teacher rigTeacher(Teacher teacher) {
+        System.out.println("注册传入的 teacher :" + teacher.toString());
+        teacherMapper.rigTeacher(teacher);
+        Teacher teacher1 =  teacherMapper.getTeacherByName(teacher.getTeacherName());
+        System.out.println("注册后的 teacher :" + teacher1.toString());
+        return teacherMapper.getTeacherByName(teacher.getTeacherName());
+    }
 }

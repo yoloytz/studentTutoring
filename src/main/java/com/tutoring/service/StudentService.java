@@ -59,4 +59,11 @@ public interface StudentService {
      * @return 更改后的用户对象
      */
     Student updateStudentPassword(String newPassword, Student student);
+
+    /**
+     * 根据学生信息注册学生信息
+     * @param student 注册学生信息
+     * @return 注册后返回数据库中注册成功的信息
+     */
+    Student rigStudent(Student student);
 }

@@ -70,4 +70,12 @@ public interface TeacherService {
      * @return 返回所有未被接单的订单
      */
     List<Classes> getAllOrders();
+
+    /**
+     * 注册教师
+     * @param teacher 教师信息
+     * @return 返回注册后的教师信息
+     */
+    Teacher rigTeacher(Teacher teacher);
+
 }

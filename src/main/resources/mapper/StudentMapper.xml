@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tutoring.mapper.StudentMapper">
+    <insert id="rigStudent">
+        INSERT INTO studenttutoring.student(username,password,name,age,gender,school,info,tel)
+        values (#{student.userName},#{student.password},#{student.name},#{student.age},#{student.gender},#{student.school},#{student.info},#{student.tel})
+    </insert>
 
     <update id="upDateUserInfo">
         UPDATE studenttutoring.student
