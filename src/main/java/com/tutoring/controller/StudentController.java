@@ -96,6 +96,20 @@ public class StudentController {
         return refreshView(currentUser);
     }
 
-    //退出登录
-    //修改密码
+    /**
+     * 修改密码并刷新
+     * @param newPassword 新的密码
+     * @param session 学生信息
+     * @return 刷新页面
+     */
+    @RequestMapping(path = "changePassword",method = RequestMethod.POST)
+    private ModelAndView changePassword(String newPassword, HttpSession session){
+        System.out.println("新密码测试" + newPassword);
+        Student currentUser = (Student) session.getAttribute("currentUser");
+        Student newStudent = studentService.updateStudentPassword(newPassword,currentUser);
+        ModelAndView modelAndView =  refreshView(newStudent);
+        modelAndView.addObject("message", "密码修改成功");
+        return modelAndView;
+    }
+
 }

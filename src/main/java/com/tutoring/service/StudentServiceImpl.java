@@ -72,4 +72,19 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.getStudentInfobyId(studentId);
     }
 
+    /**
+     * 更改用户密码 返回更改后的用户对象
+     *
+     * @param newPassword 用户新密码
+     * @param student     要更改的用户对象
+     * @return 更改后的用户对象
+     */
+    @Override
+    public Student updateStudentPassword(String newPassword, Student student) {
+        System.out.println("新密码测试2" + newPassword);
+        int studentId = student.getStudentId();
+        studentMapper.updateUserPassword(studentId,newPassword);
+        return studentMapper.getStudentInfobyId(studentId);
+    }
+
 }

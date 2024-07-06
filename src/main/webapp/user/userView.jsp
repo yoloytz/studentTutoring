@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.tutoring.pojo.Student" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2024-07-05
@@ -28,6 +28,13 @@
     <h1 class="text-center">用户视图</h1>
     <h2>欢迎, <c:out value="${user.userName}" /></h2>
 
+    <c:if test="${not empty message}">
+        <div class="alert alert-success" role="alert">
+                ${message}
+        </div>
+    </c:if>
+
+    <button id="logoutButton" class="btn btn-danger">退出登录</button>
     <!-- 用户信息查看和修改 -->
     <div class="panel panel-default">
         <div class="panel-heading">个人信息</div>
@@ -208,7 +215,7 @@
 <div id="changePasswordModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="user/changePassword" method="post">
+            <form id="changePasswordForm" action="Student/changePassword" method="post" onsubmit="return validatePassword()">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">修改密码</h4>
@@ -222,6 +229,10 @@
                         <label for="newPassword">新密码:</label>
                         <input type="password" class="form-control" id="newPassword" name="newPassword" required>
                     </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">确认新密码:</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">提交</button>
@@ -232,6 +243,38 @@
     </div>
 </div>
 
+<!-- 添加退出登录按钮 -->
+
+
 <%--<%@ include file="footer.jsp" %>--%>
+
+<script>
+    // 从服务器获取当前用户的密码，假设当前用户信息存储在session中
+    const currentPassword = "<%= ((Student)session.getAttribute("currentUser")).getPassword() %>";
+    function validatePassword() {
+        const oldPassword = document.getElementById('oldPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        // 检查原密码是否正确
+        if (oldPassword !== currentPassword) {
+            alert("原密码不正确");
+            return false;
+        }
+
+        // 检查新密码和确认新密码是否匹配
+        if (newPassword !== confirmPassword) {
+            alert("新密码和确认新密码不匹配");
+            return false;
+        }
+        // 密码验证通过
+        return true;
+    }
+
+    // 退出登录按钮点击事件
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        window.location.href = 'index.jsp';
+    });
+</script>
+
 </body>
 </html>

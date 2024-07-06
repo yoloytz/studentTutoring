@@ -5,6 +5,7 @@ import com.tutoring.pojo.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -38,4 +39,12 @@ public interface StudentMapper {
      */
     @Select("SELECT * FROM studenttutoring.student WHERE studentid = #{studentId}")
     Student getStudentInfobyId(int studentId);
+
+    /**
+     * 在数据库中更新学生密码
+     * @param studentId 学生id
+     * @param password 新密码
+     */
+    @Update("UPDATE studenttutoring.student SET password = #{password} WHERE studentid = #{studentId}")
+    void updateUserPassword(@Param("studentId") int studentId, @Param("password") String password);
 }

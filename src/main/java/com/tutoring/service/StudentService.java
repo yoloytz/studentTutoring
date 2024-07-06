@@ -51,4 +51,12 @@ public interface StudentService {
      * @return 学生信息
      */
     Student getStudentById(int studentId);
+
+    /**
+     * 更改用户密码 返回更改后的用户对象
+     * @param newPassword 用户新密码
+     * @param student 要更改的用户对象
+     * @return 更改后的用户对象
+     */
+    Student updateStudentPassword(String newPassword, Student student);
 }
